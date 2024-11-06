@@ -11,7 +11,5 @@ int main() {
     printf("Sum: %d\n", sum);
     printf("Difference: %d\n", difference);
 
-    printf("testing poll scm for pipeline");
-
     return 0;
 }
