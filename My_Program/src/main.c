@@ -11,5 +11,7 @@ int main() {
     printf("Sum: %d\n", sum);
     printf("Difference: %d\n", difference);
 
+    printf("test");
+
     return 0;
 }
