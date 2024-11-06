@@ -1,0 +1,8 @@
+docker build -t myjenkins-blueocean:2.462.3-1 .
+
+docker network create jenkins
+
+docker run --name jenkins-blueocean --restart=on-failure --detach --network jenkins --ip 172.18.0.3 --env DOCKER_HOST=tcp://docker:2376 --env DOCKER_CERT_PATH=/certs/client --env DOCKER_TLS_VERIFY=1 --volume jenkins-data:/var/jenkins_home --volume jenkins-docker-certs:/certs/client:ro --publish 8080:8080 --publish 50000:50000 myjenkins-blueocean:2.462.3-1
+
+#For windows host : create container to act as intermediary between docker host and jenkins container - ip address is used in jenkins cloud agent config
+docker run -d --restart=always --network jenkins --ip 172.18.0.3 -p 127.0.0.1:2376:2375 -v /var/run/docker.sock:/var/run/docker.sock alpine/socat tcp-listen:2375,fork,reuseaddr unix-connect:/var/run/docker.sock
