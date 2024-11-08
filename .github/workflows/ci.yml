@@ -1,0 +1,28 @@
+name: Build with GCC toolchain
+
+on:
+  push:
+    branches:
+      - '*'
+  pull_request:
+    branches:
+      - '*'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest  # Use GitHub's Ubuntu-based runner
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up GCC toolchain
+        run: |
+          sudo apt update
+          sudo apt install -y build-essential  # Install GCC and other essential build tools
+
+      - name: Build the project with GCC
+        run: |
+          gcc -v
+          cd My_Program
+          make
