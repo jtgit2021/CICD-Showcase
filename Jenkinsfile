@@ -6,7 +6,7 @@ pipeline {
         stage('Clone') {
             steps {
                 echo "Cloning repository..."
-                git branch: 'main', url: 'https://github.com/jtgit2021/jenkins-showcase'
+                git branch: 'main', url: 'https://github.com/jtgit2021/CICD-Showcase'
             }
         }
         stage('Build') {
